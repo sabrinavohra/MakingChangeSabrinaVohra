@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * The class Making Change solves a classic problem:
  * given a set of coins, how many ways can you make change for a target amount?
@@ -11,8 +13,16 @@ public class MakingChange {
      * TODO: Complete this function, countWays(), to return the number of ways to make change
      *  for any given total with any given set of coins.
      */
+    private static ArrayList[] possiblities;
     public static long countWays(int target, int[] coins) {
-        // Take stock of the coins in list
+        possiblities = new ArrayList[target];
+        for(int i = 0; i < target; i++) {
+
+        }
+
+
+
+            // Take stock of the coins in list
 
         //Ideas:
         // Create recursive algorithm:
@@ -36,9 +46,16 @@ public class MakingChange {
 
     public static int ways(int target, int[] coins, int currentWays) {
         if (target <= 0 || coins.length <= 1) {
-            return currentWays;
+            return currentWays + 1;
         }
+        // How to find combinations that work?
         currentWays++;
-        return ways(target - 1, coins ,currentWays);
+        int[] newCoins = new int[coins.length - 1];
+        for(int i = 0; i < newCoins.length; i++) {
+            newCoins[i] = coins[i];
+        }
+        ways(target - 1, coins, currentWays);
+        ways(target, newCoins, currentWays);
+        return currentWays;
     }
 }
