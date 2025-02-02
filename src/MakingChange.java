@@ -13,11 +13,11 @@ public class MakingChange {
      * TODO: Complete this function, countWays(), to return the number of ways to make change
      *  for any given total with any given set of coins.
      */
-    private static ArrayList[] possiblities;
+    private static int[] possiblities;
     public static long countWays(int target, int[] coins) {
-        possiblities = new ArrayList[target];
+        possiblities = new int[target];
         for(int i = 0; i < target; i++) {
-
+            ways(target, coins, 0);
         }
 
 
@@ -45,11 +45,16 @@ public class MakingChange {
     }
 
     public static int ways(int target, int[] coins, int currentWays) {
+        // Possible base cases? Possible ways to save number of paths to certain target value / certain number of coins?
         if (target <= 0 || coins.length <= 1) {
             return currentWays + 1;
         }
+        if (possiblities[target] != 0) {
+            return possiblities[target];
+        }
         // How to find combinations that work?
         currentWays++;
+        possiblities[target] = currentWays;
         int[] newCoins = new int[coins.length - 1];
         for(int i = 0; i < newCoins.length; i++) {
             newCoins[i] = coins[i];
