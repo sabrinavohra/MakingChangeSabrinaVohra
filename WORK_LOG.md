@@ -11,6 +11,7 @@ Name: Sabrina Vohra
 | 2/3  | 10:45 - 11:15am |                                                                                                                                                                       We looked on the slides and brainstormed in class. |
 | 2/6  |  2:45 - 3:00pm  |                                                             I started working through the process on the slides for memoization. I am getting an out of bounds error and think I am not properly checking the 2-d array. |
 | 2/10 | 12:50 - 1:20pm  | I figured out the memoization solution by figuring out that I had to increase the number of rows in my storage table, with Mr. Blick's help. I began working on tabulation by solving a similar way but going bottom up. |
+| 2/12 |  9:35 - 9:50am  |                                                                                                                              I worked on the tabulation approach by trying to use a for-loop to update the array values. |
 
 
 To add a new row to the table, click into a cell and then hit shift-enter.
