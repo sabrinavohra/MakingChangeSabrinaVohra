@@ -20,38 +20,40 @@ public class MakingChange {
         coin = coins;
         numWays = new long[target + 1][coins.length];
         //return memoWays(target, coins.length - 1);
-        return tabWays(0, 0);
+        return tabWays(target, 0);
     }
 
     public static long memoWays(int target, int i) {
         if (target == 0) {
             return 1;
         }
-        if ((target < 0) || i >= coin.length || i < 0) {
+        else if ((target < 0) || i >= coin.length || i < 0) {
             return 0;
         }
-        if (numWays[target][i] > 0) {
+        else if (numWays[target][i] > 0) {
             return numWays[target][i];
         }
         numWays[target][i] = memoWays(target-coin[i], i) + memoWays(target, i - 1);
         return numWays[target][i];
     }
 
-    public static long tabWays(int target, int i) {
-        if(coin[0] > 1) {
-            numWays[0][0] = 0;
-        }
-        if(coin[0] == 1) {
-            numWays[0][0] = 1;
-        }
-        if(i >= coin.length || target > total || target < 0 || i < 0) {
+    public static long tabWays(int target, int index) {
+        if(index >= coin.length || target < 0 || index < 0) {
             return 0;
         }
-        for(int m = 1; m < target + 1; m++) {
-            for(int n = 1; n < coin.length; n++) {
-                numWays[m][n] = numWays[m-1][n-coin[i]];
+        for(int k = 0; k < coin.length; k++) {
+            numWays[0][k] = 1;
+        }
+        for(int m = 1; m <= target; m++) {
+            for(int n = 0; n < coin.length; n++) {
+                if ((m - coin[n]) >= 0) {
+                    numWays[m][n] += numWays[m - coin[n]][n];
+                }
+                if ((n - 1) >= 0) {
+                    numWays[m][n] += numWays[m][n - 1];
+                }
             }
         }
-        return numWays[target][coin.length];
+        return numWays[target][coin.length - 1];
     }
 }
