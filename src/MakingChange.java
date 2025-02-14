@@ -18,9 +18,9 @@ public class MakingChange {
         // Calls two methods for either memoization or tabulation approach
 
         // Comment in the line below for memoization approach
-        //return memoWays(target, coins.length - 1);
+        return memoWays(target, coins.length - 1);
         // Comment in the line below for tabulation approach
-        return tabWays(target);
+        //return tabWays(target);
     }
 
     // Completes solution using memoization
@@ -29,7 +29,7 @@ public class MakingChange {
         if (target == 0) {
             return 1;
         }
-        else if ((target < 0) || i >= coin.length || i < 0) {
+        else if ((target < 0) || i < 0) {
             return 0;
         }
         else if (numWays[target][i] > 0) {
